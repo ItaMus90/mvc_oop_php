@@ -12,14 +12,31 @@ class Processor{
      *
      * @throws Exception
      */
-    public function process(Router $router, string $currentURI){
+    public function run(Router $router, string $currentURI){
 
-        $knownRoute = $router->process($currentURI);
-        $controllerName = $knownRoute->getController();
+        $parseURL = parse_url($currentURI);
+        $path = $parseURL['path'];
 
-        $controller = new $controllerName();
+        foreach ($router->getRoutes() as $pattern => $route){
 
-        return $controller->{$knownRoute->getMethod()}();
+            if(FALSE === $route instanceof Route){
+                throw new Exception("This not a route");
+            }
+
+            if(preg_match('#^'.$pattern.'$#',$path, $matches)){
+
+                $controllerName = $route->getController();
+                $controller = new $controllerName();
+
+                break;
+
+            }
+
+        }
+
+
+        return $controller->{$route->getMethod()}();
+
 
     }
 
