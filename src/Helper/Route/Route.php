@@ -35,6 +35,12 @@ class Route{
      */
     public function handle(array $options){
 
+        /**
+         * @todo needs SOC (separation of concerns)
+         * 1)Validation
+         * 2)Exceptions
+         * 3)Setting of values
+         */
 
         if (!isset($options['pattern'])){
             throw new Exception('Pattern is required');
