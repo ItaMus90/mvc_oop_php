@@ -1,10 +1,10 @@
 <?php
 
-use Helper\Route\Processor;
+use App\Helper\Route\Processor;
 
 $basePath = $_SERVER['DOCUMENT_ROOT'] . '/projects/oop_course/';
 
-require_once $basePath . 'src/Helper/AutoLoader/AutoLoader.php';
+require_once $basePath . 'vendor/autoload.php';
 $routes = require_once $basePath . 'app/config/routing.php';
 
 $currentURI = $_SERVER['REQUEST_URI'];

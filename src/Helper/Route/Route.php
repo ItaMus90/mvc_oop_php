@@ -1,8 +1,6 @@
 <?php
 
-namespace Helper\Route;
-
-use Exception;
+namespace App\Helper\Route;
 
 class Route{
 
@@ -17,48 +15,12 @@ class Route{
     /**
      * @var string
      */
-    private $method = '';
+    private $action = '';
 
     /**
-     * Route constructor.
-     * @param array $options
-     *
-     * @throws Exception
+     * @var array
      */
-    public function __construct(array $options){
-        $this->handle($options);
-    }
-
-    /**
-     * @param array $options
-     * @throws Exception
-     */
-    public function handle(array $options){
-
-        /**
-         * @todo needs SOC (separation of concerns)
-         * 1)Validation
-         * 2)Exceptions
-         * 3)Setting of values
-         */
-
-        if (!isset($options['pattern'])){
-            throw new Exception('Pattern is required');
-        }
-
-        if (!isset($options['controller'])){
-            throw new Exception('Controller is required');
-        }
-
-        if (!isset($options['method'])){
-            throw new Exception('Method is required');
-        }
-
-        $this->pattern = $options['pattern'];
-        $this->controller = $options['controller'];
-        $this->method = $options['method'];
-
-    }
+    private $methods = [];
 
     /**
      * @param string $pattern
@@ -67,6 +29,35 @@ class Route{
     public function setPattern(string $pattern): Route{
 
         $this->pattern = $pattern;
+        return $this;
+
+    }
+
+    /**
+     * @param string $action
+     * @return Route
+     */
+    public function setAction(string $action): Route{
+        $this->action = $action;
+        return$this;
+    }
+
+    /**
+     * @param string $controller
+     * @return Route
+     */
+    public function setController(string $controller): Route{
+        $this->controller = $controller;
+        return $this;
+    }
+
+    /**
+     * @param array $methods
+     * @return Route
+     */
+    public function setMethods(array $methods): Route{
+
+        $this->methods = array_map('strtoupper', $methods);
         return $this;
 
     }
@@ -86,26 +77,20 @@ class Route{
     }
 
     /**
-     * @param string $controller
-     * @return Route
+     * @return array
      */
-    public function setController(string $controller): Route{
-        $this->controller = $controller;
+    public function getMethods(): array {
+        return $this->methods;
     }
 
     /**
      * @return string
      */
-    public function getMethod(): string{
-        return $this->method;
+    public function getAction(): string{
+        return $this->action;
     }
 
-    /**
-     * @param string $method
-     * @return Route
-     */
-    public function setMethod(string $method): Route{
-        $this->method = $method;
-    }
+
+
 
 }

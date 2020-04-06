@@ -1,6 +1,6 @@
 <?php
 
-namespace Helper\Route;
+namespace App\Helper\Route;
 use Exception;
 
 class Processor{
