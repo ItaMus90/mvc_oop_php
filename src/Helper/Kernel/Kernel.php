@@ -1,11 +1,9 @@
 <?php
 
-use App\Helper\Route\Processor;
+require_once  'config.php';
+require BASE_PATH . 'vendor/autoload.php';
+require_once 'bootsrtap.php';
 
-$basePath = $_SERVER['DOCUMENT_ROOT'] . '/projects/oop_course/';
-
-require_once $basePath . 'vendor/autoload.php';
-$routes = require_once $basePath . 'app/config/routing.php';
 
 $currentURI = $_SERVER['REQUEST_URI'];
 
@@ -25,8 +23,8 @@ unset($currentURI[3]);
 $currentURI = '/' . implode("/", $currentURI);
 /** @var  $currentURI  end*/
 
-$processor = new Processor();
-
-$router = $processor->make($routes);
-//return $processor->process($router, $currentURI);
-return $processor->run($router, $currentURI);
+//$processor = new Processor();
+//
+//$router = $processor->make($routes);
+////return $processor->process($router, $currentURI);
+//return $processor->run($router, $currentURI);

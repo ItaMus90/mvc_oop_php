@@ -26,10 +26,10 @@ class MethodValidator extends AbstractType implements InterfaceValidator{
     }
 
     /**
-     * @param $values
+     * @param array $values
      * @return bool
      */
-    public function isValueCorrect($values){
+    public function isValueCorrect(array $values){
 
         $possible = [
             'GET',

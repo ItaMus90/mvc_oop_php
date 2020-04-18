@@ -25,7 +25,7 @@ class FactoryTest extends \Codeception\Test\Unit{
     public function testMakeRoute(){
 
         $factory = new Factory();
-        $route = $factory->make([
+        $route = $factory->addRoute([
             'pattern' => '/',
             'controller' => Type\Home::class,
             'method' => ['GET'],
@@ -68,7 +68,7 @@ class FactoryTest extends \Codeception\Test\Unit{
         $results = [];
 
         foreach ($routes as $route){
-            $results[] = $factory->make($route);
+            $results[] = $factory->addRoute($route);
         }
 
         $this->assertEquals(count($routes), count($results));
