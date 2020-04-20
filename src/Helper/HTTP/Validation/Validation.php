@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Helper\Route\Validation;
+namespace App\Helper\HTTP\Validation;
 
-use App\Helper\Route\Route;
-use App\Helper\Route\Validation\Type\ControllerValidator;
+use App\Helper\HTTP\Route\Route;
 
 class Validation{
 
@@ -51,7 +50,7 @@ class Validation{
 
             if ($validator instanceof InterfaceValidator){
 
-                $validator->setRoute($route);
+                    $validator->setRoute($route);
                 $isValid = $validator->isValid();
 
 

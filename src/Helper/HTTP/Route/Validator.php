@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Helper\Route;
+namespace App\Helper\HTTP\Route;
 
 
 use Exception;
-use App\Helper\Route\Validation\Validation;
+use App\Helper\HTTP\Validation\Validation;
 
 
 class Validator {

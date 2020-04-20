@@ -1,8 +1,8 @@
 <?php
-namespace Helper\Route\Validation\Type;
+namespace Helper\HTTP\Validation\Type;
 
-use App\Helper\Route\Route;
-use App\Helper\Route\Validation\Type\PatternValidator;
+use App\Helper\HTTP\Route\Route;
+use App\Helper\HTTP\Validation\Type\PatternValidator;
 use UnitTester;
 
 class PatternValidatorTest extends \Codeception\Test\Unit

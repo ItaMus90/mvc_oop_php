@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Helper\Route\Validation\Type;
+namespace App\Helper\HTTP\Validation\Type;
 
 
-use App\Helper\Route\Validation\AbstractType;
-use App\Helper\Route\Validation\InterfaceValidator;
+use App\Helper\HTTP\Validation\AbstractType;
+use App\Helper\HTTP\Validation\InterfaceValidator;
 
 class PatternValidator extends AbstractType implements InterfaceValidator{
 

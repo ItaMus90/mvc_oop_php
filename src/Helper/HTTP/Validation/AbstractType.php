@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Helper\Route\Validation;
+namespace App\Helper\HTTP\Validation;
 
-use App\Helper\Route\Route;
+use App\Helper\HTTP\Route\Route;
 
 abstract class AbstractType {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helper\Route;
+namespace App\Helper\HTTP\Route;
 
 use App\Controller\Type;
 use UnitTester;
