@@ -1,9 +1,9 @@
 <?php
 
-use App\Helper\Route\Factory;
-use App\Helper\Route\Validation\Validation;
-use App\Helper\Route\Validation\Type;
-use App\Helper\Route\Validator;
+use App\Helper\HTTP\Route\Factory;
+use App\Helper\HTTP\Validation\Validation;
+use App\Helper\HTTP\Validation\Type;
+use App\Helper\HTTP\Route\Validator;
 //var_dump(BASE_PATH); die();
 $routeData = require_once BASE_PATH . 'app/config/routing.php';
 
