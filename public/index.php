@@ -1,18 +1,23 @@
 <?php
 
-    use Repository\Type\Invoice;
 
-$viewData = require_once '../src/Helper/Kernel/Kernel.php';
+use App\Helper\Kernel\Kernel;
+require_once  '../app/config/config.php';
+require BASE_PATH . 'vendor/autoload.php';
+$routes = require_once KERNEL_PATH . 'bootsrtap.php';
 
-//   $repo = new Invoice();
-//   $repo->findOne(4);
+try{
 
-/**
- * Do something that
- * gets the view from
- * the controller
- * require_once 'views/home.php';
- */
+    $response = Kernel::boot($routes);
+    require_once PUBLIC_PATH . $response['view'];
 
-//require_once $viewData;
+}catch (Exception $exception){
+
+    if($exception->getCode() === 404){
+        header('HTTP/1.0 404 Not Found');
+        exit;
+    }
+
+}
+
 

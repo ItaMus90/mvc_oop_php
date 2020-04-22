@@ -4,7 +4,7 @@ use App\Helper\HTTP\Route\Factory;
 use App\Helper\HTTP\Validation\Validation;
 use App\Helper\HTTP\Validation\Type;
 use App\Helper\HTTP\Route\Validator;
-//var_dump(BASE_PATH); die();
+
 $routeData = require_once BASE_PATH . 'app/config/routing.php';
 
 //Make Route Validation
@@ -20,4 +20,6 @@ $validation->setValidators([
 
 $routeFactory = new Factory();
 $routes = $routeFactory->makeRoutes($routeData);
-$isValid = Validator::validate($routes, $validation);
+Validator::validate($routes, $validation);
+
+return $routes;

@@ -10,6 +10,20 @@ class InvoicePageCest{
      *
      * @group invoice
      */
+    public function invoiceListTest(AcceptanceTester $I){
+
+        $I->wantTo("Test the response code for Invoice list page");
+        $I->amOnPage('/invoice');
+        $I->canSee('This is a invoice');
+        $I->seeResponseCodeIs(200);
+
+    }
+
+    /**
+     * @param AcceptanceTester $I
+     *
+     * @group invoice
+     */
     public function invoiceTest(AcceptanceTester $I){
 
         $I->wantTo("Test the response code for Invoice");

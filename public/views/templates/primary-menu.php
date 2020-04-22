@@ -1,3 +1,4 @@
 <ul>
-    <li><a href="/">Home</a></li>
+    <li><a href="<?php echo CLIENT_PATH ?>">Home</a></li>
+    <li><a href="<?php echo CLIENT_PATH . '/invoice'?>">Invoice</a></li>
 </ul>
