@@ -14,6 +14,11 @@ class Request{
      */
     private $method = '';
 
+    /**
+     * @var array
+     */
+    private $parameters = [];
+
 
     public function __construct(string $queryString = '', string $method = ''){
 
@@ -70,5 +75,56 @@ class Request{
 
     }
 
+    /**
+     * @return array
+     */
+    public function getParameters(): array{
+        return $this->parameters;
+    }
+
+    /**
+     * @param array $parameters
+     * @return Request
+     */
+    public function setParameters(array $parameters): Request{
+
+        $this->parameters = $parameters;
+
+        foreach ($parameters as $key => $value){
+            $this->addParameter($key, $value);
+        }
+
+        return $this;
+
+    }
+
+    /**
+     * @param string $key
+     * @param $value
+     * @return Request
+     */
+    public function addParameter(string $key, $value): Request{
+
+        $this->parameters[$key] = $value;
+        return $this;
+
+    }
+
+    /**
+     * @param string $key
+     * @param mixed|null $default
+     * @return mixed|null
+     */
+    public function getParameter(string $key, $default = null){
+
+        $value = $default;
+
+        if(isset($this->parameters[$key])){
+            $value = $this->parameters[$key];
+        }
+
+        return $value;
+
+    }
 
 }

@@ -55,6 +55,7 @@ class Locator{
         $check = preg_match(self::createPattern($routeToCheck), $queryString, $matches);
 
         if($check){
+            //@todo Return matches as well as found route
             $foundRoute = $routeToCheck;
         }
 

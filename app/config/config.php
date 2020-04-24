@@ -8,7 +8,7 @@
  * and remove CLIENT_PATH
  */
 
-$basePath = $_SERVER['DOCUMENT_ROOT'] . '/projects/oop_course/';
+$basePath = $_SERVER['DOCUMENT_ROOT'] . '/../';
 
 define('DS', DIRECTORY_SEPARATOR);
 define('BASE_PATH', $basePath);

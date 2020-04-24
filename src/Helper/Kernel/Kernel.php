@@ -11,8 +11,7 @@ class Kernel{
 
     public static function boot(array $routes){
 
-        $currentURI = Kernel::getURI($_SERVER['REQUEST_URI']);
-        $request = new Request($currentURI, $_SERVER['REQUEST_METHOD']);
+        $request = new Request($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
         $locator = new Locator($request, $routes);
 
         $route = $locator->locate();
@@ -24,27 +23,10 @@ class Kernel{
         $controllerName = $route->getController();
 
         $controller = new $controllerName();
-        return $controller->{$route->getAction()}();
+        return $controller->{$route->getAction()}($request);
 
     }
 
-    public static function getURI($currentURI){
-        /**
-         * This is temporery solution
-         * need to create Virtual Host for
-         * the /projects/oop_course/public/
-         */
-        $currentURI = explode("/",$currentURI);
-
-        unset($currentURI[0]);
-        unset($currentURI[1]);
-        unset($currentURI[2]);
-        unset($currentURI[3]);
-        $currentURI = '/' . implode("/", $currentURI);
-
-        return $currentURI;
-
-    }
 }
 
 //
