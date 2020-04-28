@@ -27,39 +27,26 @@ class Locator{
     public function __construct(Request $request, array $routes = []){
 
         $this->request = $request;
-        $this->setRoutes($routes);
-
-    }
-
-    /**
-     * @param array $routes
-     * @return Locator
-     */
-    public function setRoutes(array $routes) :Locator{
-
         $this->routes = $routes;
-        return $this;
 
     }
-
 
     /**
      * @param Route $routeToCheck
      * @param string $queryString
-     * @return null|Route
+     * @return null|array
      */
-    public function routeMatch(Route $routeToCheck, string $queryString): ?Route{
+    public function routeMatch(Route $routeToCheck, string $queryString): ?array{
 
         $foundRoute = null;
 
-        $check = preg_match(self::createPattern($routeToCheck), $queryString, $matches);
+        preg_match(self::createPattern($routeToCheck), $queryString, $matches);
 
-        if($check){
-            //@todo Return matches as well as found route
-            $foundRoute = $routeToCheck;
+        if(false === empty($matches)){
+            return $matches;
         }
 
-        return $foundRoute;
+        return null;
 
     }
 
@@ -79,10 +66,15 @@ class Locator{
 
         foreach ($this->routes as $route){
 
-            $foundRoute = $this->routeMatch($route, $queryString);
+            $matches = $this->routeMatch($route, $queryString);
 
-            if($foundRoute instanceof Route){
+            if(false === empty($matches)){
+
+                unset($matches[0]);
+                $this->request->setParameters($matches);
+                $foundRoute = $route;
                 break;
+
             }
 
         }
@@ -97,6 +89,9 @@ class Locator{
      * @return string
      */
     public static function createPattern(Route $route) :string{
+        /**
+         * @todo replace {id} with param pattern
+         */
         return self::DELIMITER . '^' . $route->getPattern() . '$' . self::DELIMITER;
     }
 

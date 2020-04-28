@@ -14,5 +14,5 @@ define('DS', DIRECTORY_SEPARATOR);
 define('BASE_PATH', $basePath);
 define('PUBLIC_PATH', BASE_PATH . DS . 'public' . DS);
 define('KERNEL_PATH', BASE_PATH . DS. 'src' . DS . 'Helper' . DS . 'Kernel' . DS);
+define('TEMPLATE_PATH', PUBLIC_PATH . DS. 'views' . DS . 'templates' . DS );
 
-define('CLIENT_PATH', 'http://localhost/projects/oop_course/public');
